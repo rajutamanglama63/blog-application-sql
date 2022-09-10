@@ -1,12 +1,17 @@
 const express = require("express");
-const { where } = require("sequelize/types");
 const User = require("../models");
+const Blog = require("../models");
 
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({
+      include: {
+        model: Blog,
+        attributes: { exclude: ["userId"] },
+      },
+    });
     res.json(users);
   } catch (error) {
     next(error);
