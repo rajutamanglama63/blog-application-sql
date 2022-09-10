@@ -33,19 +33,22 @@ router.post("/", tokenExtractor, async (req, res, next) => {
     return res.json(blog);
   } catch (error) {
     next(error);
-    return res.status(400).json({ error });
+    // return res.status(400).json({ error });
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", tokenExtractor, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.decodedToken.id);
-    // const blog = await Blog.findByPk(req.params.id);
-    await Blog.destroy({
-      where: {
-        userId: user.id,
-      },
-    });
+    const blog = await Blog.findByPk(req.params.id);
+
+    if (user.id === blog.userId) {
+      await Blog.destroy({
+        where: {
+          author: blog.author,
+        },
+      });
+    }
 
     res.status(200).json({ msg: "successfully deleted" });
   } catch (error) {

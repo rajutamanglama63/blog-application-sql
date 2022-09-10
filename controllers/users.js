@@ -1,6 +1,6 @@
 const express = require("express");
-const User = require("../models");
-const Blog = require("../models");
+const { User } = require("../models");
+const { Blog } = require("../models");
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ router.post("/", async (req, res, next) => {
     res.json(user);
   } catch (error) {
     next(error);
-    return res.status(400).json({ error });
+    // return res.status(400).json({ error });
   }
 });
 

@@ -5,7 +5,7 @@ const errorHandler = (err, req, res, next) => {
   console.log(err.messsage);
 
   if (err.name === "SequelizeValidationError") {
-    return res.status(400).json({ err: err.messsage });
+    return res.status(400).json({ err: err.message });
   }
 
   next(err);
@@ -13,7 +13,7 @@ const errorHandler = (err, req, res, next) => {
 
 const tokenExtractor = (req, res, next) => {
   const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startWith("bearer ")) {
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
     try {
       req.decodedToken = jwt.verify(authorization.substring(7), SECRET);
     } catch (error) {

@@ -13,9 +13,9 @@ router.post("/", async (req, res, next) => {
       },
     });
 
-    const password = req.body.password === "pswd";
+    const passwordCorrect = req.body.password === "pswd";
 
-    if (!(user && password)) {
+    if (!(user && passwordCorrect)) {
       return res.status(401).json({
         error: "invalid username or password",
       });
