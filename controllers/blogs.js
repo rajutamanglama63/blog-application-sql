@@ -1,4 +1,5 @@
 const express = require("express");
+const { Op } = require("sequelize");
 const { Blog, User } = require("../models");
 const { tokenExtractor } = require("../utils/middleware");
 
@@ -8,12 +9,20 @@ router.get("/", async (req, res, next) => {
   // const blogs = await sequelize.query("SELECT * FROM blogs", {type: QueryTypes.SELECT})
 
   try {
+    const where = {};
+
+    if (req.query.search) {
+      where.title = {
+        [Op.substring]: req.query.search,
+      };
+    }
     const blogs = await Blog.findAll({
       attributes: { exclude: ["userId"] },
       include: {
         model: User,
         attributes: ["name"],
       },
+      where,
     });
 
     console.log(JSON.stringify(blogs, null, 2));
