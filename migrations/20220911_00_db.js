@@ -34,7 +34,7 @@ module.exports = {
         type: DataTypes.DATE,
       },
       readings: {
-        type: DataTypes.ARRAY,
+        type: DataTypes.ARRAY(DataTypes.TEXT),
         defaultValue: [],
       },
     });
@@ -58,12 +58,12 @@ module.exports = {
         autoIncrement: true,
       },
       username: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         unique: true,
         allowNull: false,
       },
       name: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
     });
@@ -73,7 +73,7 @@ module.exports = {
       references: { model: "users", key: "id" },
     });
     await queryInterface.addColumn("users", "readings", {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       defaultValue: [],
       references: { model: "readings", key: "id" },
     });

@@ -30,7 +30,7 @@ Blog.init(
       defaultValue: null,
     },
     readings: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       defaultValue: [],
     },
   },

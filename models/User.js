@@ -12,16 +12,16 @@ User.init(
       autoIncrement: true,
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       unique: true,
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     readings: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.ARRAY(DataTypes.TEXT),
       defaultValue: [],
     },
   },
