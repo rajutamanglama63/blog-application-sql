@@ -20,6 +20,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    readings: {
+      type: DataTypes.ARRAY,
+      defaultValue: [],
+    },
   },
   {
     sequelize,
