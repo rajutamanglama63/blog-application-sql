@@ -42,6 +42,7 @@ router.post("/", tokenExtractor, async (req, res, next) => {
     const blog = await Blog.create({ ...req.body, userId: user.id });
     return res.json(blog);
   } catch (error) {
+    console.log(error);
     next(error);
     // return res.status(400).json({ error });
   }

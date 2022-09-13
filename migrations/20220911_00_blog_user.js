@@ -33,22 +33,6 @@ module.exports = {
       updated_at: {
         type: DataTypes.DATE,
       },
-      readings: {
-        type: DataTypes.ARRAY(DataTypes.TEXT),
-        defaultValue: [],
-      },
-    });
-
-    await queryInterface.createTable("readings", {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      read: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
     });
 
     await queryInterface.createTable("users", {
@@ -71,11 +55,6 @@ module.exports = {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "users", key: "id" },
-    });
-    await queryInterface.addColumn("users", "readings", {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
-      defaultValue: [],
-      references: { model: "readings", key: "id" },
     });
   },
   down: async ({ context: queryInterface }) => {

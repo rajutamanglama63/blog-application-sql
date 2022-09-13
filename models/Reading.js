@@ -10,9 +10,9 @@ Reading.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    read: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    readingList: {
+      type: DataTypes.ARRAY(DataTypes.ARRAY),
+      defaultValue: [],
     },
   },
   {

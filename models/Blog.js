@@ -29,10 +29,6 @@ Blog.init(
       type: DataTypes.INTEGER,
       defaultValue: null,
     },
-    readings: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
-      defaultValue: [],
-    },
   },
   {
     sequelize,

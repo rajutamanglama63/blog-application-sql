@@ -1,11 +1,11 @@
 POST http://localhost:5000/api/blogs
-Content-Type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkphbmVAMTIzIiwiaWQiOjIsImlhdCI6MTY2MjgzMjEwMX0.FlmSJIbACpuTyYv_2MpVV3D4mqungZnN_eSHuOTG0e0
+Content-Type: application/json; charset=utf-8
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvaG5AMTIzIiwiaWQiOjIsImlhdCI6MTY2MzA1OTI3NX0.5IOf1vrCuKG8RezdsxaGFFzpjDzZps8FMF-UOPQIpe4
 
 {
     "author": "Jane Doe",
-    "url": "pink.com",
-    "title": "Pink"
+    "url": "mazenta.com",
+    "title": "Mezanta"
 }
 
 ###
@@ -21,8 +21,8 @@ POST http://localhost:5000/api/users
 Content-Type: application/json; charset=utf-8
 
 {
-    "username": "Jane@123",
-    "name": "Jane Doe"
+    "username": "John@123",
+    "name": "John Doe"
 }
 
 ###
@@ -32,4 +32,4 @@ GET http://localhost:5000/api/users
 POST http://localhost:5000/api/login
 Content-Type: application/json; charset=utf-8
 
-{ "username": "Jane@123", "password":"pswd" }
+{ "username": "John@123", "password":"pswd" }
